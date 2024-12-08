@@ -2,7 +2,7 @@
 title: GPG & Nitrokey
 description: 
 published: true
-date: 2024-12-08T10:36:11.377Z
+date: 2024-12-08T10:43:35.671Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-08T10:36:11.377Z
@@ -62,4 +62,14 @@ git config --global user.email "your@mail.com"
 ```
 
 ## Setup GitHub
-Github is a piece of shit. This will take a little while to do.
+Github is a piece of shit. It neither allows you to import multiple subkeys for one primary key nor the primary key by itself (and verifying that the commit key is in the chain-of-trust).
+
+Therefore, we have to merge ALL our keys in ONE CENTRAL PLACE. Oh boy.
+
+Anyway, do a quick `gpg --armor --export <SUBKEY_ID>! > machine.public.gpg` and copy all files to one machine.
+
+Now, run `gpg --homedir . --import machine.public.gpg` for every `machine` you have.
+`gpg --homedir . --list-keys` should now show multiple `[S]` subkeys.
+Finally, export the primary key: `gpg --homedir . --armor --export <PRIMARY_ID>` and [upload the output to GitHub](https://github.com/settings/keys).
+
+This is a HORRIBLE way to do this. Should one machine get compromised, you must delete the one single "monokey" and RECREATE the ENTIRE KEYCHAIN (or just `key n` & `delkey` in the existing gpg homedir) and UPLOAD IT AGAIN. Please let GitHub know that some of their users may have multiple computers and would love to maintain their integrity.
