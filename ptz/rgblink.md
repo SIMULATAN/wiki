@@ -1,8 +1,8 @@
 ---
-title: RGBLink
+title: PTZ RGBLink
 description: 
 published: true
-date: 2024-06-19T09:56:19.486Z
+date: 2024-12-13T11:29:31.032Z
 tags: 
 editor: markdown
 dateCreated: 2024-06-13T15:42:15.295Z
