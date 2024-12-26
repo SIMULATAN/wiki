@@ -2,7 +2,7 @@
 title: Snoty
 description: 
 published: true
-date: 2024-12-26T12:48:54.000Z
+date: 2024-12-26T12:50:31.730Z
 tags: 
 editor: markdown
 dateCreated: 2024-10-28T14:21:02.308Z
@@ -30,4 +30,9 @@ cd /bitnami/mongodb/data/db \
 
 ## MongoSH
 ```bash
+# as non-root
 mongosh mongodb://snoty:$MONGODB_EXTRA_PASSWORDS@127.0.0.1:27017/snoty?directConnection=true
+
+# as root
+mongosh mongodb://$MONGODB_ROOT_USER:$MONGODB_ROOT_PASSWORD@127.0.0.1:27017/admin?directConnection=true
+```
