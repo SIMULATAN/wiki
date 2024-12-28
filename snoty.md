@@ -2,7 +2,7 @@
 title: Snoty
 description: 
 published: true
-date: 2024-12-26T15:47:28.232Z
+date: 2024-12-28T21:35:14.844Z
 tags: 
 editor: markdown
 dateCreated: 2024-10-28T14:21:02.308Z
@@ -36,3 +36,7 @@ mongosh mongodb://snoty:$MONGODB_EXTRA_PASSWORDS@127.0.0.1:27017/snoty?directCon
 # as root
 mongosh mongodb://$MONGODB_ROOT_USER:$MONGODB_ROOT_PASSWORD@127.0.0.1:27017/admin?directConnection=true
 ```
+
+### Replication Status
+```js
+rs.printSecondaryReplicationInfo()
