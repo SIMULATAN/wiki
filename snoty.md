@@ -2,7 +2,7 @@
 title: Snoty
 description: 
 published: true
-date: 2024-12-28T21:35:14.844Z
+date: 2024-12-29T00:21:57.970Z
 tags: 
 editor: markdown
 dateCreated: 2024-10-28T14:21:02.308Z
