@@ -2,7 +2,7 @@
 title: K3s
 description: Some tips related to k3s
 published: true
-date: 2025-03-05T17:28:45.680Z
+date: 2025-03-05T17:48:05.805Z
 tags: 
 editor: markdown
 dateCreated: 2024-05-03T05:59:39.228Z
@@ -31,27 +31,27 @@ Add an OIDC client to Authelia. The following shows an example using the officia
 The `client_secret` approach can be found in my k8s-ops repo: https://github.com/SIMULATAN/k8s-ops/tree/main/auth/authelia
 ```yml
 configMap:
-	identity_providers:
-  	oidc:
-    	clients:
-      	- client_id: k8s-main
-	        client_name: Kubernetes Main
-	        client_secret:
-	          path: /secrets/authelia-oidc-secrets/CLIENT_SECRET_K8S-MAIN
-	        public: true
-	        pre_configured_consent_duration: 69y
-	        authorization_policy: two_factor
-	        redirect_uris:
-	          - http://localhost:8000
-	            # used if the port 8000 is already in use
-	          - http://localhost:18000
-	        scopes:
-	          - openid
-	          - profile
-	          - groups
-	          - email
-	        userinfo_signed_response_alg: none
-	        token_endpoint_auth_method: none
+  identity_providers:
+    oidc:
+      clients:
+        - client_id: k8s-main
+          client_name: Kubernetes Main
+          client_secret:
+          path: /secrets/authelia-oidc-secrets/CLIENT_SECRET_K8S-MAIN
+          public: true
+          pre_configured_consent_duration: 69y
+          authorization_policy: two_factor
+          redirect_uris:
+            - http://localhost:8000
+            # used if the port 8000 is already in use
+            - http://localhost:18000
+          scopes:
+            - openid
+            - profile
+            - groups
+            - email
+          userinfo_signed_response_alg: none
+          token_endpoint_auth_method: none
 ```
 
 ### Setup Kubernetes
