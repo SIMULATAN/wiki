@@ -2,7 +2,7 @@
 title: MinIO
 description: 
 published: true
-date: 2025-03-09T10:00:08.446Z
+date: 2025-03-09T10:29:47.459Z
 tags: 
 editor: markdown
 dateCreated: 2025-01-17T21:00:07.258Z
