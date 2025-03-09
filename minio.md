@@ -2,7 +2,7 @@
 title: MinIO
 description: 
 published: true
-date: 2025-03-09T09:54:30.440Z
+date: 2025-03-09T10:00:08.446Z
 tags: 
 editor: markdown
 dateCreated: 2025-01-17T21:00:07.258Z
@@ -26,7 +26,7 @@ services:
       - ./data:/bitnami/minio/data
     environment:
     	# TODO: set other variables required by minio
-      MINIO_BROWSER_REDIRECT_URL: https://s3.example/minio
+      MINIO_BROWSER_REDIRECT_URL: https://s3.example.com/minio
     labels:
       traefik.enable: true
 
@@ -50,6 +50,7 @@ networks:
     external: true
 ```
 
+The only caveat of this approach is that you must open `https://s3.example.com/minio/minio` in your browser manually. Using `https://s3.example.com/minio` will not work - the page will be empty.
 
 ## OIDC Config
 Go to Identity -> OpenID and create an entry for Authelia.
