@@ -2,7 +2,7 @@
 title: PostgreSQL
 description: 
 published: true
-date: 2025-03-27T20:53:23.441Z
+date: 2025-03-27T21:00:12.273Z
 tags: 
 editor: markdown
 dateCreated: 2024-11-11T08:41:00.067Z
