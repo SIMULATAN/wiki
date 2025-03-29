@@ -2,7 +2,7 @@
 title: Kubernetes
 description: 
 published: true
-date: 2025-03-29T10:10:19.224Z
+date: 2025-03-29T10:11:01.931Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
@@ -28,7 +28,7 @@ metadata:
 
 # Troubleshooting
 ## failed to create fsnotify watcher: too many open files
-`containerd-shim` uses a ton of inotify user instances. This can be checked using this command:
+`containerd-shim` uses a ton of inotify user instances. This can be checked using this command (make sure to run as root!):
 ```sh
 for foo in /proc/*/fd/*; do readlink -f $foo; done | grep inotify | cut -d/ -f3 | xargs -I '{}' -- ps --no-headers -o comm {} | sort | uniq -c | sort -nr
 ```
