@@ -2,13 +2,26 @@
 title: Kubernetes
 description: 
 published: true
-date: 2025-03-29T10:12:29.480Z
+date: 2025-04-20T12:35:12.779Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
 ---
 
-# Refresh GHCR creds
+# Useful Tips
+## Get all Docker Registries in use
+*run in bash, not zsh! zsh will not recognize the comment correctly*
+```bash
+kubectl get pods -A -o json |
+	jq -r '.items[].spec.containers[].image' |
+	sort -nr |
+  uniq |
+  grep '.*/.*/.*' | # images may omit a registry, in which case we'd incorrectly use the image name as the registry
+  cut -d '/' -f 1 |
+  uniq
+``` 
+
+## Refresh GHCR creds
 1. recreate on GitHub
 2. backup local dockerconfig
 3. `docker login ghcr.io`
