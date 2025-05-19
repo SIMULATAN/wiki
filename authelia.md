@@ -2,7 +2,7 @@
 title: Authelia
 description: Notes on Authelia
 published: true
-date: 2024-04-13T16:10:57.971Z
+date: 2025-05-19T08:56:38.254Z
 tags: 
 editor: markdown
 dateCreated: 2024-04-13T16:10:57.971Z
@@ -10,7 +10,7 @@ dateCreated: 2024-04-13T16:10:57.971Z
 
 # Authelia
 ## Create a new Client in my K8s Cluster
-1. Create secret: `docker run authelia/authelia:latest authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986`
+1. Create secret: `docker run --rm authelia/authelia:latest authelia crypto hash generate pbkdf2 --variant sha512 --random --random.length 72 --random.charset rfc3986`
 2. Add variables for secret in a new file
 ```
 _CLIENT_SECRET_MYSERVICE=<random password>
