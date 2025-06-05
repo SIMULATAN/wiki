@@ -2,7 +2,7 @@
 title: Kubernetes
 description: 
 published: true
-date: 2025-04-20T12:35:12.779Z
+date: 2025-06-05T09:42:06.914Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
@@ -20,6 +20,21 @@ kubectl get pods -A -o json |
   cut -d '/' -f 1 |
   uniq
 ``` 
+
+## Delete broken pods
+```bash
+kubectl get pod -A |
+	grep ContainerStatusUnknown |
+	awk '{print "-n "$1" "$2}' |
+  xargs -L1 kubectl delete pod
+```
+
+## Delete evicted pods
+```bash
+kubectl get pods -A -o json |
+	jq -r '.items[] | select(.status.reason!=null) | select(.status.reason | contains("Evicted")) | "-n \(.metadata.namespace) \(.metadata.name)"' |
+  xargs -L1 kubectl delete pod
+```
 
 ## Refresh GHCR creds
 1. recreate on GitHub
