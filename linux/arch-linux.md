@@ -2,7 +2,7 @@
 title: Arch Linux
 description: 
 published: true
-date: 2025-05-24T14:55:32.925Z
+date: 2025-07-04T12:24:35.721Z
 tags: 
 editor: markdown
 dateCreated: 2025-05-24T14:55:32.925Z
@@ -40,4 +40,11 @@ password   optional                    pam_permit.so
 session    required                    pam_limits.so
 session    required                    pam_unix.so
 session    optional                    pam_permit.so
+```
+
+# Troubleshooting
+## Random NVME-related freezes
+Add this Kernel parameter:
+```properties
+nvme_core.default_ps_max_latency_us=0
 ```
