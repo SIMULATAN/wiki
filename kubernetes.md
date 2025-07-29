@@ -2,13 +2,22 @@
 title: Kubernetes
 description: 
 published: true
-date: 2025-06-05T09:42:06.914Z
+date: 2025-07-29T13:01:49.219Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
 ---
 
-# Useful Tips
+# Snippets
+## Get all Images in use
+```bash
+kubectl get pods -A -o jsonpath="{.items[*].spec['initContainers', 'containers'][*].image}" |
+	tr -s '[[:space:]]' '\n' |
+  sort |
+  uniq -c |
+  sort -nr
+``` 
+
 ## Get all Docker Registries in use
 *run in bash, not zsh! zsh will not recognize the comment correctly*
 ```bash
@@ -18,7 +27,7 @@ kubectl get pods -A -o json |
   uniq |
   grep '.*/.*/.*' | # images may omit a registry, in which case we'd incorrectly use the image name as the registry
   cut -d '/' -f 1 |
-  uniq
+  uniq -c
 ``` 
 
 ## Delete broken pods
