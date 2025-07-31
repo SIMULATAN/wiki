@@ -2,13 +2,22 @@
 title: K3s
 description: Some tips related to k3s
 published: true
-date: 2025-03-05T17:48:05.805Z
+date: 2025-07-31T13:20:40.564Z
 tags: 
 editor: markdown
 dateCreated: 2024-05-03T05:59:39.228Z
 ---
 
 # K3s
+## Setup Command
+You'll need a K3s Bootstrap token. You can probably use [`k3s token create`](https://docs.k3s.io/cli/token#k3s-token-1) for this purpose, although I cannot remember how I originally joined the nodes.
+`/var/lib/rancher/k3s/server/token`'s last part could have something to do with it too.
+```bash
+curl -sfL https://get.k3s.io | K3S_TOKEN='...' sh -s - server \
+    --cluster-init \
+    --write-kubeconfig-mode=644 \
+    --tls-san=`ip addr | grep '172.' | head -1 | awk '{$1=$1;print}' | cut -d ' ' -f 2 | cut -d '/' -f 1` # Optional, needed if using a fixed registration address
+```
 
 ## Access embedded etcd
 ```bash
@@ -17,7 +26,7 @@ ETCDCTL_CACERT='/var/lib/rancher/k3s/server/tls/etcd/server-ca.crt' \
 ETCDCTL_CERT='/var/lib/rancher/k3s/server/tls/etcd/server-client.crt' \
 ETCDCTL_KEY='/var/lib/rancher/k3s/server/tls/etcd/server-client.key' \
 ETCDCTL_API=3 \
-etcdctl member list
+	etcdctl member list
 ```
 Source: https://gist.github.com/superseb/0c06164eef5a097c66e810fe91a9d408
 
