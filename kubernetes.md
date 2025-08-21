@@ -2,7 +2,7 @@
 title: Kubernetes
 description: 
 published: true
-date: 2025-07-29T13:01:49.219Z
+date: 2025-08-21T20:53:57.980Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
@@ -86,3 +86,13 @@ it should print the changed properties (= the two lines above)
 *Source:
 https://github.com/k3s-io/k3s/issues/10325#issuecomment-2155008661
 https://www.suse.com/support/kb/doc/?id=000020048*
+
+## I/O stalls, high CPU usage, kswapd0 using CPU despite no swap configured
+Set these sysctl values (assuming an 8GB system, adjust accordingly):
+```
+vm.dirty_ratio = 4
+vm.dirty_background_ratio = 2
+```
+This will reduce in-memory caching of I/O writes, therefore avoiding stalling all I/O operations while waiting for the disk writes to catch up.
+
+..at least I think so
