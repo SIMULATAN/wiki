@@ -2,7 +2,7 @@
 title: Kubernetes
 description: 
 published: true
-date: 2025-08-21T20:53:57.980Z
+date: 2026-08-01T16:23:16.358Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
@@ -74,7 +74,10 @@ for foo in /proc/*/fd/*; do readlink -f $foo; done | grep inotify | cut -d/ -f3 
 ---
 
 To fix this issue, bump the inotify limits:
-1. Set these properties in `/etc/sysctl.conf`:
+
+1. Set these properties in `/usr/lib/sysctl.d/99-k3s-custom.conf`:
+> In Debian 13 (trixie), the previously recommended `/etc/sysctl.conf` is no longer read. Use above path instead.
+{.is-warning}
 ```
 fs.inotify.max_user_instances=8192
 fs.inotify.max_user_watches=524288
@@ -83,9 +86,10 @@ fs.inotify.max_user_watches=524288
 it should print the changed properties (= the two lines above)
 3. verify using `sysctl fs.inotify.max_user_instances`
 
-*Source:
+*Sources:
 https://github.com/k3s-io/k3s/issues/10325#issuecomment-2155008661
-https://www.suse.com/support/kb/doc/?id=000020048*
+https://www.suse.com/support/kb/doc/?id=000020048
+https://www.debian.org/releases/trixie/release-notes/issues.en.html#etc-sysctl-conf-is-no-longer-honored*
 
 ## I/O stalls, high CPU usage, kswapd0 using CPU despite no swap configured
 Set these sysctl values (assuming an 8GB system, adjust accordingly):
