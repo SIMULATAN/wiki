@@ -2,13 +2,20 @@
 title: Kubernetes
 description: 
 published: true
-date: 2026-08-01T16:23:16.358Z
+date: 2026-08-02T11:26:31.972Z
 tags: 
 editor: markdown
 dateCreated: 2024-12-04T09:19:29.881Z
 ---
 
 # Snippets
+## Get Kubernetes Pod by Host PID
+``` 
+nsenter -t $PID -u hostname
+```
+
+*Source: https://dustinspecker.com/posts/find-which-kubernetes-pod-created-process/*
+
 ## Get all Images in use
 ```bash
 kubectl get pods -A -o jsonpath="{.items[*].spec['initContainers', 'containers'][*].image}" |
