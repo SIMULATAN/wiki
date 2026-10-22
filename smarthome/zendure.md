@@ -2,7 +2,7 @@
 title: Zendure
 description: 
 published: true
-date: 2026-10-22T13:02:23.709Z
+date: 2026-10-22T13:17:26.409Z
 tags: 
 editor: markdown
 dateCreated: 2026-10-21T12:04:40.826Z
@@ -33,7 +33,16 @@ Limits how much Power the Battery discharges with. Maintain a healthy level to k
 
 Limits the maximum battery level. Lower values preserve the battery health for longer while nearing 100 leads to faster degradation.
 
-## Options & Algorithm Config
+## Config / Helpers
+### `zendure_mode`
+Dropdown - Summer or Winter
+
+### `zendure_discharge_balancing`
+Boolean - enables/disables discharge balancing (remains `true` between 0-80%)
+
+See [Algorithm](#Algorithm)
+
+# Algorithm
 ### Winter Mode
 Sets the min SoC charge to 80% (must not discharge below that) and the input limit to the maximum available.
 Any auto-balancing is disabled.
@@ -44,9 +53,9 @@ Once the main battery is below 75%, discharge as needed. To fix bouncing/yo-yo, 
 
 ```
 if (charge <= 75%)
-	useBalancing = true
+	zendure_discharge_balancing = true
 else if (charge >= 80%)
-	useBalancing = false
+	zendure_discharge_balancing = false
 ```
 
 After that variable is updated, the logic may run, gated behind it.
