@@ -2,7 +2,7 @@
 title: Zendure
 description: 
 published: true
-date: 2026-10-22T15:35:38.965Z
+date: 2026-10-22T16:53:05.266Z
 tags: 
 editor: markdown
 dateCreated: 2026-10-21T12:04:40.826Z
