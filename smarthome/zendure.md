@@ -2,7 +2,7 @@
 title: Zendure
 description: 
 published: true
-date: 2026-10-22T13:17:26.409Z
+date: 2026-10-22T15:34:27.555Z
 tags: 
 editor: markdown
 dateCreated: 2026-10-21T12:04:40.826Z
@@ -27,6 +27,9 @@ Limits how much Power the Battery charges with. Keep low enough to prevent charg
 > Output power limit (W).
 
 Limits how much Power the Battery discharges with. Maintain a healthy level to keep the primary Battery around the expected percentage.
+
+### `aocMode`
+> AC mode. 1: Charge, 2: Discharge.
 
 ### `socSet`
 > Target state of charge (%). Range: 70-100.
