@@ -2,7 +2,7 @@
 title: Zendure
 description: 
 published: true
-date: 2026-10-21T14:47:45.311Z
+date: 2026-10-22T13:02:23.709Z
 tags: 
 editor: markdown
 dateCreated: 2026-10-21T12:04:40.826Z
@@ -34,7 +34,22 @@ Limits how much Power the Battery discharges with. Maintain a healthy level to k
 Limits the maximum battery level. Lower values preserve the battery health for longer while nearing 100 leads to faster degradation.
 
 ## Options & Algorithm Config
-TODO
+### Winter Mode
+Sets the min SoC charge to 80% (must not discharge below that) and the input limit to the maximum available.
+Any auto-balancing is disabled.
+
+### Summer Mode
+Charge using excess.
+Once the main battery is below 75%, discharge as needed. To fix bouncing/yo-yo, it may be worth using a tracker variable:
+
+```
+if (charge <= 75%)
+	useBalancing = true
+else if (charge >= 80%)
+	useBalancing = false
+```
+
+After that variable is updated, the logic may run, gated behind it.
 
 # Auto Balancing Setup
 Make sure to enable the `smartMode` Switch (=> `smartMode: 1`) - otherwise, frequent updates to the parameters will be flushed to the Flash Memory, thus negatively impacting the device.
