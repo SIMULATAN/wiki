@@ -2,7 +2,7 @@
 title: Zendure
 description: 
 published: true
-date: 2026-10-22T15:34:27.555Z
+date: 2026-10-22T15:35:38.965Z
 tags: 
 editor: markdown
 dateCreated: 2026-10-21T12:04:40.826Z
@@ -30,6 +30,9 @@ Limits how much Power the Battery discharges with. Maintain a healthy level to k
 
 ### `aocMode`
 > AC mode. 1: Charge, 2: Discharge.
+
+### `minSoc`
+> Minimum state of charge (%). Range: 0-50.
 
 ### `socSet`
 > Target state of charge (%). Range: 70-100.
